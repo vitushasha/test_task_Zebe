@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Order{% endblock title %}
+{% block content %}
+    <h1>Форма для оформления заказа</h1>
+    {% if sent %}
+        <h2>{{ text }}</h2>
+    {% else %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Отправить">
+        </form>
+    {% endif %}
+{% endblock content %}
